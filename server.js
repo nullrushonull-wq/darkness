@@ -7,14 +7,15 @@ const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 const USERS_FILE = path.join(__dirname, "users.json");
 
-// تنظیمات اولیه
+// تنظیمات سرور
 app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// تنظیمات نشست کاربران
+// تنظیمات نشست کاربر
 app.use(session({
     secret: process.env.SESSION_SECRET || "pikso-development-secret",
     resave: false,
@@ -27,8 +28,8 @@ app.use(session({
     }
 }));
 
-// نمایش صفحات سایت از پوشه public
-app.use(express.static(path.join(__dirname, "public")));
+// نمایش فایل‌های سایت از کنار server.js
+app.use(express.static(__dirname));
 
 // دریافت کاربران
 function getUsers() {
@@ -56,7 +57,7 @@ function saveUsers(users) {
     );
 }
 
-// بررسی فعال بودن سرور
+// صفحه اصلی API
 app.get("/api", (req, res) => {
     res.json({
         message: "PIKSO GAMES SERVER IS RUNNING!"
@@ -94,7 +95,9 @@ app.post("/api/register", async (req, res) => {
         const users = getUsers();
 
         const exists = users.some(
-            user => user.username.toLowerCase() === cleanUsername.toLowerCase()
+            user =>
+                typeof user.username === "string" &&
+                user.username.toLowerCase() === cleanUsername.toLowerCase()
         );
 
         if (exists) {
@@ -142,7 +145,9 @@ app.post("/api/login", async (req, res) => {
         const users = getUsers();
 
         const user = users.find(
-            item => item.username.toLowerCase() === username.trim().toLowerCase()
+            item =>
+                typeof item.username === "string" &&
+                item.username.toLowerCase() === username.trim().toLowerCase()
         );
 
         if (!user || !(await bcrypt.compare(password, user.password))) {
@@ -213,13 +218,13 @@ app.post("/api/logout", (req, res) => {
 
         res.clearCookie("connect.sid");
 
-        res.json({
+        return res.json({
             message: "با موفقیت خارج شدید."
         });
     });
 });
 
-// مدیریت خطاهای سرور
+// مدیریت خطاها
 app.use((error, req, res, next) => {
     console.error(error);
 
