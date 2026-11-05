@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PIKSO GAMES</title>
-
+    <title>PIKSO GAMES | دانلود بازی</title>
+    <meta name="description" content="PIKSO GAMES - دانلود بازی‌های جذاب و رایگان">
+    
     <style>
         * {
             margin: 0;
@@ -14,80 +14,68 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
+            font-family: Tahoma, Arial, sans-serif;
             background: #090912;
             color: white;
-            font-family: Tahoma, Arial, sans-serif;
         }
 
-        /* HEADER */
-
         header {
-            padding: 22px 8%;
+            background: #11111e;
+            border-bottom: 1px solid #292943;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #11111c;
-            border-bottom: 1px solid #292039;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo {
-            color: #b45cff;
-            font-size: 25px;
+            font-size: 27px;
             font-weight: bold;
-            letter-spacing: 2px;
+            color: #a855f7;
         }
 
         nav {
             display: flex;
-            gap: 25px;
+            gap: 22px;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: #ddd;
             text-decoration: none;
-            transition: .3s;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #b45cff;
+            color: #a855f7;
         }
-
-        /* HERO */
 
         .hero {
             min-height: 430px;
-            padding: 100px 20px;
+            padding: 90px 20px;
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background: radial-gradient(
-                ellipse at center,
-                #32134e,
-                #151020 55%,
-                #090912
-            );
+            background:
+                radial-gradient(circle at center, #38145c 0%, #151023 45%, #090912 80%);
         }
 
         .hero h1 {
-            font-size: 55px;
+            font-size: 48px;
             margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #b45cff;
+            color: #c084fc;
         }
 
         .hero p {
-            color: #aaa;
-            font-size: 17px;
+            color: #ccc;
+            font-size: 18px;
             line-height: 2;
+            max-width: 650px;
         }
 
         .hero-button {
@@ -97,8 +85,9 @@
             background: #9333ea;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            transition: .3s;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
         .hero-button:hover {
@@ -106,149 +95,128 @@
             transform: translateY(-3px);
         }
 
-        /* GAMES */
-
-        .games {
-            padding: 75px 8%;
-            text-align: center;
+        .section {
+            padding: 65px 8%;
         }
 
         .section-title {
-            font-size: 32px;
-            margin-bottom: 15px;
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 40px;
+            color: #c084fc;
         }
 
-        .section-description {
-            color: #999;
-            line-height: 2;
-            margin-bottom: 45px;
-        }
-
-        .game-container {
-            display: flex;
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 350px));
             justify-content: center;
+            gap: 25px;
         }
 
         .game-card {
-            width: 100%;
-            max-width: 750px;
             background: #151522;
-            border: 1px solid #393044;
-            border-radius: 15px;
+            border: 1px solid #302442;
+            border-radius: 16px;
             overflow: hidden;
-            text-align: right;
-            transition: .3s;
+            transition: 0.3s;
         }
 
         .game-card:hover {
             transform: translateY(-7px);
             border-color: #a855f7;
-            box-shadow: 0 10px 35px #7500ff22;
         }
 
-        .game-card img {
+        .game-image {
             width: 100%;
-            display: block;
-            aspect-ratio: 16 / 9;
+            height: 220px;
             object-fit: cover;
+            background: #222;
+        }
+
+        .game-content {
+            padding: 22px;
+        }
+
+        .game-content h3 {
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .game-content p {
+            color: #aaa;
+            line-height: 1.9;
+            margin-bottom: 18px;
         }
 
         .game-info {
-            padding: 25px;
-        }
-
-        .game-info h3 {
-            font-size: 26px;
-            color: #c084fc;
-            margin-bottom: 15px;
-            direction: ltr;
-            text-align: right;
-        }
-
-        .game-info p {
-            color: #aaa;
-            line-height: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
 
-        .game-price {
-            font-size: 25px;
+        .free {
             color: #4ade80;
-            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 18px;
         }
 
-        .game-status {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #30213e;
-            color: #d8b4fe;
-            border-radius: 6px;
-            font-size: 14px;
+        .coming-soon {
+            color: #facc15;
+            font-size: 13px;
         }
 
-        .buy-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 13px 28px;
+        .game-button {
+            display: block;
+            text-align: center;
             background: #9333ea;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 15px;
-            transition: .3s;
+            padding: 13px;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        .buy-button:hover {
+        .game-button:hover {
             background: #7e22ce;
-            transform: translateY(-3px);
         }
-
-        /* ABOUT */
 
         .about {
-            padding: 75px 8%;
             text-align: center;
-            background: #0d0d18;
+            background: #11111e;
         }
 
-        /* FOOTER */
+        .about p {
+            color: #bbb;
+            line-height: 2.2;
+            max-width: 700px;
+            margin: auto;
+        }
 
         footer {
-            padding: 30px 15px;
+            padding: 25px;
             text-align: center;
-            background: #11111c;
-            border-top: 1px solid #292039;
-            color: #888;
+            color: #777;
+            border-top: 1px solid #292943;
+            background: #090912;
         }
-
-        footer span {
-            color: #b45cff;
-        }
-
-        /* MOBILE */
 
         @media (max-width: 600px) {
             header {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav {
-                gap: 15px;
-                flex-wrap: wrap;
                 justify-content: center;
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 34px;
             }
 
-            .games, .about {
-                padding: 55px 5%;
+            .hero p {
+                font-size: 15px;
             }
 
-            .game-info h3 {
-                font-size: 21px;
+            nav {
+                justify-content: center;
             }
         }
     </style>
@@ -256,109 +224,85 @@
 
 <body>
 
-    <header>
+<header>
+    <div class="logo">PIKSO GAMES</div>
 
-        <div class="logo">PIKSO GAMES</div>
+    <nav>
+        <a href="#home">خانه</a>
+        <a href="#games">بازی‌ها</a>
+        <a href="#about">درباره ما</a>
+        <a href="/login.html">ورود</a>
+        <a href="/register.html">ثبت‌نام</a>
+    </nav>
+</header>
 
-        <nav>
-            <a href="#home">خانه</a>
-            <a href="#games">بازی‌ها</a>
-            <a href="#about">درباره ما</a>
-            <a href="/login.html">ورود</a>
-            <a href="/register.html">ثبت‌نام</a>
-        </nav>
+<section class="hero" id="home">
+    <h1>به PIKSO GAMES خوش آمدید</h1>
 
-    </header>
+    <p>
+        دنیایی از بازی‌های جذاب و سرگرم‌کننده.
+        بازی مورد علاقه‌ات رو پیدا کن و از تجربه بازی لذت ببر!
+    </p>
 
-    <!-- HERO -->
+    <a href="#games" class="hero-button">
+        مشاهده بازی‌ها
+    </a>
+</section>
 
-    <section class="hero" id="home">
+<section class="section" id="games">
+    <h2 class="section-title">بازی‌های ما</h2>
 
-        <h1>WELCOME TO <span>PIKSO</span></h1>
+    <div class="games">
 
-        <p>
-            دنیای بازی‌های ساخته‌شده توسط PIKSO GAMES
-            <br>
-            Enter a New World of Gaming
-        </p>
+        <div class="game-card">
 
-        <a href="#games" class="hero-button">
-            مشاهده بازی
-        </a>
+            <img
+                src="/wolf.jpg"
+                alt="THE END OF A WOLF"
+                class="game-image"
+            >
 
-    </section>
+            <div class="game-content">
 
-    <!-- GAMES -->
+                <h3>THE END OF A WOLF</h3>
 
-    <section class="games" id="games">
-
-        <h2 class="section-title">OUR GAME</h2>
-
-        <p class="section-description">
-            بازی‌های ما را مشاهده کنید
-        </p>
-
-        <div class="game-container">
-
-            <div class="game-card">
-
-                <img src="/wolf.jpg" alt="THE END OF A WOLF">
+                <p>
+                    وارد دنیایی مرموز و پرماجرا شو.
+                    ماجراجویی خودت رو شروع کن!
+                </p>
 
                 <div class="game-info">
-
-                    <h3>THE END OF A WOLF</h3>
-
-                    <p>
-                        یک ماجراجویی در دنیایی تاریک و پر از راز.
-                        منتظر انتشار این بازی باشید.
-                    </p>
-
-                    <div class="game-price">
-                        ۵۰٬۰۰۰ تومان
-                    </div>
-
-                    <span class="game-status">
-                        به‌زودی
-                    </span>
-
-                    <br>
-
-                    <a
-                        href="https://daramet.com/adms_mozi"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="buy-button"
-                    >
-                        حمایت و خرید بازی
-                    </a>
-
+                    <span class="free">رایگان</span>
+                    <span class="coming-soon">قابل دانلود</span>
                 </div>
 
-            </div>
+                <a
+                    href="https://upzila.ir/download/65"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="game-button"
+                >
+                    دانلود رایگان بازی
+                </a>
 
+            </div>
         </div>
 
-    </section>
+    </div>
+</section>
 
-    <!-- ABOUT -->
+<section class="section about" id="about">
+    <h2 class="section-title">درباره PIKSO GAMES</h2>
 
-    <section class="about" id="about">
+    <p>
+        PIKSO GAMES یک مجموعه برای معرفی و انتشار بازی‌های جذاب است.
+        هدف ما فراهم کردن تجربه‌ای سرگرم‌کننده برای بازیکنان است.
+    </p>
+</section>
 
-        <h2 class="section-title">ABOUT PIKSO</h2>
-
-        <p class="section-description">
-            PIKSO GAMES یک مجموعه مستقل بازی‌سازی است.
-            <br>
-            هدف ما ساخت تجربه‌های متفاوت در دنیای بازی‌هاست.
-        </p>
-
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer>
-        © 2026 <span>PIKSO GAMES</span> - All Rights Reserved
-    </footer>
+<footer>
+    © 2026 PIKSO GAMES - تمامی حقوق محفوظ است.
+</footer>
 
 </body>
 </html>
