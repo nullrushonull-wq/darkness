@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام | PIKSO GAMES</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #09090d;
+            color: white;
+            font-family: Tahoma, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .register-box {
+            width: 90%;
+            max-width: 400px;
+            background: #15151e;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #713cff;
+            box-shadow: 0 0 30px #713cff30;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        h1 {
+            color: #a77aff;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input {
+            background: #252532;
+            color: white;
+            border: 1px solid #444;
+        }
+
+        button {
+            background: #713cff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #895cff;
+        }
+
+        #message {
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        a {
+            color: #a77aff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register-box">
+
+        <h1>PIKSO GAMES</h1>
+        <p>ساخت حساب کاربری</p>
+
+        <form id="registerForm">
+
+            <input
+                id="username"
+                type="text"
+                placeholder="نام کاربری"
+                minlength="3"
+                maxlength="20"
+                required
+            >
+
+            <input
+                id="password"
+                type="password"
+                placeholder="رمز عبور (حداقل ۸ کاراکتر)"
+                minlength="8"
+                maxlength="128"
+                required
+            >
+
+            <button id="registerButton" type="submit">
+                ثبت نام
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <p>
+            حساب داری؟
+            <a href="login.html">وارد شو</a>
+        </p>
+
+        <p>
+            <a href="index.html">بازگشت به صفحه اصلی</a>
+        </p>
+
+    </div>
+
+    <script>
+        const form = document.getElementById("registerForm");
+        const message = document.getElementById("message");
+        const button = document.getElementById("registerButton");
+
+        form.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+
+            message.textContent = "در حال ثبت نام...";
+            message.style.color = "#a77aff";
+            button.disabled = true;
+
+            try {
+
+                const response = await fetch("/api/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+
+                message.textContent = result.message || "پاسخ نامشخص از سرور";
+                message.style.color = response.ok ? "#75ed9a" : "#ff7070";
+
+                if (response.ok) {
+                    form.reset();
+                }
+
+            } catch (error) {
+
+                console.error("Registration error:", error);
+
+                message.textContent =
+                    "ارتباط با سرور برقرار نشد! آدرس سایت و روشن بودن سرور را بررسی کن.";
+
+                message.style.color = "#ff7070";
+
+            } finally {
+                button.disabled = false;
+            }
+
+        });
+    </script>
+
+</body>
+</html>

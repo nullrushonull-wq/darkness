@@ -1,0 +1,287 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #09090d;
+    color: white;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+/* HEADER */
+
+header {
+    height: 85px;
+    background: #111018;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #30203e;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #a855f7;
+    letter-spacing: 3px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 12px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #b66aff;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.login {
+    background: #8129d9;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background: radial-gradient(
+        circle at center,
+        #38165a,
+        #171020 50%,
+        #09090d
+    );
+}
+
+.hero-content {
+    padding: 30px;
+}
+
+.tag {
+    color: #c084fc;
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.8;
+    margin: 25px 0;
+}
+
+.hero h1 span {
+    color: #b45aff;
+}
+
+.hero p {
+    color: #c4b5d4;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.main-button {
+    display: inline-block;
+    background: #8b35df;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background: #a855f7;
+    transform: translateY(-3px);
+}
+
+/* GAMES */
+
+.games {
+    padding: 90px 30px;
+    text-align: center;
+}
+
+.games h2,
+.about h2 {
+    color: #c084fc;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #aaa;
+    margin-bottom: 45px;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.game-card {
+    background: #17121f;
+    width: 280px;
+    padding: 20px;
+    border: 1px solid #38234b;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    border-color: #a855f7;
+}
+
+.game-image {
+    height: 160px;
+    background: linear-gradient(
+        135deg,
+        #6423a0,
+        #160d22
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.game-card h3 {
+    margin: 20px 0 12px;
+    color: #c084fc;
+}
+
+.game-card p {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.game-card button {
+    background: #8129d9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+}
+
+/* ABOUT */
+
+.about {
+    text-align: center;
+    padding: 90px 25px;
+    background: #12101a;
+}
+
+.about p {
+    max-width: 650px;
+    margin: auto;
+    line-height: 2.2;
+    color: #bbb;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    background: #08080c;
+    padding: 45px 20px;
+    border-top: 1px solid #30203e;
+}
+
+footer h2 {
+    color: #a855f7;
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #888;
+    margin: 12px;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 2;
+    }
+
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.register {
+    display: inline-block;
+    background: #713cff;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.register:hover {
+    background: #895cff;
+}
+
+.auth-buttons .login {
+    cursor: pointer;
+}

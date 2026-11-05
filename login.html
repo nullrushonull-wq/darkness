@@ -1,0 +1,186 @@
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود | PIKSO GAMES</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #090912;
+            color: white;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .login-box {
+            width: 90%;
+            max-width: 400px;
+            padding: 35px;
+            background: #151522;
+            border: 1px solid #292943;
+            border-radius: 18px;
+            box-shadow: 0 0 30px #7500ff22;
+        }
+
+        h1 {
+            text-align: center;
+            color: #a855f7;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #383850;
+            border-radius: 9px;
+            background: #0d0d18;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #a855f7;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #9333ea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #7e22ce;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        #message {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        a {
+            display: block;
+            margin-top: 22px;
+            text-align: center;
+            color: #c084fc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+        <h1>PIKSO GAMES</h1>
+        <p>به حساب کاربری خود وارد شوید</p>
+
+        <form id="loginForm">
+
+            <input
+                type="text"
+                id="username"
+                placeholder="نام کاربری"
+                autocomplete="username"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="رمز عبور"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" id="loginButton">
+                ورود به حساب
+            </button>
+
+        </form>
+
+        <div id="message"></div>
+
+        <a href="/register.html">حساب ندارید؟ ثبت‌نام کنید</a>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const message = document.getElementById("message");
+        const button = document.getElementById("loginButton");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+
+            message.style.color = "#aaa";
+            message.textContent = "در حال بررسی اطلاعات...";
+
+            button.disabled = true;
+
+            try {
+                const response = await fetch("/api/login", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    message.style.color = "#4ade80";
+                    message.textContent = "ورود موفق بود!";
+
+                    window.location.replace("/dashboard.html");
+                } else {
+                    message.style.color = "#f87171";
+                    message.textContent = data.message || "نام کاربری یا رمز عبور اشتباه است.";
+                    button.disabled = false;
+                }
+
+            } catch (error) {
+                message.style.color = "#f87171";
+                message.textContent = "ارتباط با سرور برقرار نشد!";
+                button.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
+```

@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل کاربری | PIKSO GAMES</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: #09090d;
+            color: white;
+            font-family: Tahoma;
+        }
+        header {
+            background: #15151e;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #713cff;
+        }
+        .logo { color: #a77aff; font-size: 24px; font-weight: bold; }
+        main { width: 90%; max-width: 1000px; margin: 40px auto; }
+        .card {
+            background: #15151e;
+            border: 1px solid #713cff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        h1 { color: #a77aff; }
+        button {
+            background: #713cff;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">PIKSO GAMES</div>
+    <button id="logout">خروج از حساب</button>
+</header>
+
+<main>
+    <section class="card">
+        <h1>پنل کاربری</h1>
+        <h3 id="welcome">در حال بارگذاری...</h3>
+        <p>به پنل کاربری PIKSO GAMES خوش آمدی.</p>
+    </section>
+
+    <section class="card">
+        <h2>اطلاعات حساب</h2>
+        <p>نام کاربری: <span id="username">...</span></p>
+        <p>وضعیت حساب: فعال</p>
+    </section>
+
+    <section class="card">
+        <h2>بازی‌های من</h2>
+        <p>هنوز بازی‌ای به حساب شما اضافه نشده است.</p>
+    </section>
+
+    <p id="message"></p>
+</main>
+
+<script>
+async function loadAccount() {
+    try {
+        const response = await fetch("/api/me");
+
+        if (!response.ok) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        const data = await response.json();
+
+        document.getElementById("welcome").textContent =
+            "سلام، " + data.username;
+
+        document.getElementById("username").textContent =
+            data.username;
+
+    } catch (error) {
+        document.getElementById("message").textContent =
+            "خطا در ارتباط با سرور";
+    }
+}
+
+document.getElementById("logout").addEventListener("click", async () => {
+    const response = await fetch("/api/logout", { method: "POST" });
+
+    if (response.ok) {
+        window.location.href = "login.html";
+    }
+});
+
+loadAccount();
+</script>
+
+</body>
+</html>
