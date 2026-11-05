@@ -4,48 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIKSO GAMES</title>
-    <meta name="description" content="PIKSO GAMES - دنیای بازی‌ها">
+    <title>PIKSO GAMES | فروشگاه بازی</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Tahoma, Arial, sans-serif;
         }
 
         body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: #090912;
+            background: #090914;
             color: white;
         }
 
         header {
-            background: #11111e;
-            border-bottom: 1px solid #292943;
-            padding: 20px 8%;
+            background: #111124;
+            padding: 22px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
+            border-bottom: 1px solid #29294a;
         }
 
         .logo {
-            font-size: 27px;
-            font-weight: bold;
             color: #a855f7;
-        }
-
-        nav {
-            display: flex;
-            gap: 22px;
-            flex-wrap: wrap;
+            font-size: 26px;
+            font-weight: bold;
         }
 
         nav a {
-            color: #ddd;
+            color: white;
             text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
         }
 
         nav a:hover {
@@ -53,143 +48,92 @@
         }
 
         .hero {
-            min-height: 430px;
-            padding: 90px 20px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, #38145c, #151023 55%, #090912);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #17102e, #090914);
         }
 
         .hero h1 {
-            font-size: 45px;
+            font-size: 42px;
             margin-bottom: 20px;
-            color: #c084fc;
+        }
+
+        .hero h1 span {
+            color: #a855f7;
         }
 
         .hero p {
-            color: #ccc;
-            font-size: 17px;
+            color: #b9b9c9;
             line-height: 2;
-            max-width: 650px;
-        }
-
-        .hero-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 35px;
-            background: #9333ea;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-        }
-
-        .section {
-            padding: 65px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 40px;
-            color: #c084fc;
         }
 
         .games {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 350px));
-            justify-content: center;
-            gap: 25px;
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .games h2 {
+            font-size: 30px;
+            margin-bottom: 35px;
         }
 
         .game-card {
-            background: #151522;
-            border: 1px solid #302442;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: 0.3s;
+            background: #17172b;
+            border: 1px solid #343454;
+            border-radius: 18px;
+            padding: 20px;
+            max-width: 350px;
+            margin: auto;
+            text-align: center;
         }
 
-        .game-card:hover {
-            transform: translateY(-7px);
-            border-color: #a855f7;
-        }
-
-        .game-image {
+        .game-card img {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
-            background: #222;
+            border-radius: 12px;
         }
 
-        .game-content {
-            padding: 22px;
-        }
-
-        .game-content h3 {
-            font-size: 23px;
-            margin-bottom: 15px;
-        }
-
-        .game-content p {
-            color: #aaa;
-            line-height: 1.9;
-            margin-bottom: 18px;
-        }
-
-        .game-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        .game-card h3 {
+            margin: 20px 0;
+            font-size: 22px;
         }
 
         .price {
-            color: #4ade80;
-            font-size: 19px;
+            color: #a855f7;
+            font-size: 23px;
             font-weight: bold;
+            margin: 18px 0;
         }
 
-        .status {
-            color: #facc15;
-            font-size: 13px;
-        }
-
-        .game-button {
+        .buy-button {
             display: block;
-            text-align: center;
             background: #9333ea;
             color: white;
             text-decoration: none;
-            padding: 13px;
-            border-radius: 9px;
+            padding: 14px;
+            border-radius: 10px;
             font-weight: bold;
             transition: 0.3s;
         }
 
-        .game-button:hover {
+        .buy-button:hover {
             background: #7e22ce;
+            transform: translateY(-3px);
         }
 
         .about {
+            background: #111124;
+            padding: 60px 20px;
             text-align: center;
-            background: #11111e;
-        }
-
-        .about p {
-            color: #bbb;
             line-height: 2.2;
-            max-width: 700px;
-            margin: auto;
         }
 
         footer {
             padding: 25px;
             text-align: center;
-            color: #777;
-            border-top: 1px solid #292943;
+            color: #888;
+            background: #080810;
         }
 
         @media (max-width: 600px) {
@@ -198,11 +142,11 @@
             }
 
             .hero h1 {
-                font-size: 32px;
+                font-size: 30px;
             }
 
             nav {
-                justify-content: center;
+                text-align: center;
             }
         }
     </style>
@@ -210,86 +154,55 @@
 
 <body>
 
-<header>
-    <div class="logo">PIKSO GAMES</div>
+    <header>
+        <div class="logo">PIKSO GAMES</div>
 
-    <nav>
-        <a href="#home">خانه</a>
-        <a href="#games">بازی‌ها</a>
-        <a href="#about">درباره ما</a>
-        <a href="/login.html">ورود</a>
-        <a href="/register.html">ثبت‌نام</a>
-    </nav>
-</header>
+        <nav>
+            <a href="#home">خانه</a>
+            <a href="#games">بازی‌ها</a>
+            <a href="#about">درباره ما</a>
+            <a href="login.html">ورود</a>
+            <a href="register.html">ثبت‌نام</a>
+        </nav>
+    </header>
 
-<section class="hero" id="home">
-    <h1>به PIKSO GAMES خوش آمدید</h1>
+    <section class="hero" id="home">
+        <h1>به <span>PIKSO GAMES</span> خوش آمدید</h1>
+        <p>دنیای بازی‌های جذاب را با ما تجربه کنید.</p>
+    </section>
 
-    <p>
-        دنیایی از بازی‌های جذاب و سرگرم‌کننده.
-        بازی مورد علاقه‌ات رو پیدا کن!
-    </p>
-
-    <a href="#games" class="hero-button">
-        مشاهده بازی‌ها
-    </a>
-</section>
-
-<section class="section" id="games">
-
-    <h2 class="section-title">بازی‌های ما</h2>
-
-    <div class="games">
+    <section class="games" id="games">
+        <h2>بازی‌های ما</h2>
 
         <div class="game-card">
+            <img src="wolf.jpg" alt="THE END OF A WOLF">
 
-            <img
-                src="/wolf.jpg"
-                alt="THE END OF A WOLF"
-                class="game-image"
+            <h3>THE END OF A WOLF</h3>
+
+            <div class="price">۵۰٬۰۰۰ تومان</div>
+
+            <a
+                class="buy-button"
+                href="https://daramet.com/adms_mozi/products"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-
-            <div class="game-content">
-
-                <h3>THE END OF A WOLF</h3>
-
-                <p>
-                    وارد دنیایی مرموز و پرماجرا شو.
-                    ماجراجویی خودت رو شروع کن!
-                </p>
-
-                <div class="game-info">
-                    <span class="price">۵۰٬۰۰۰ تومان</span>
-                    <span class="status">به‌زودی</span>
-                </div>
-
-                <a
-                    href="https://daramet.com/adms_mozi/products"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="game-button"
-                >
-                    خرید و حمایت از بازی
-                </a>
-
-            </div>
+                خرید و حمایت از بازی
+            </a>
         </div>
+    </section>
 
-    </div>
-</section>
+    <section class="about" id="about">
+        <h2>درباره PIKSO GAMES</h2>
+        <p>
+            ما در PIKSO GAMES تلاش می‌کنیم تجربه‌ای جذاب
+            از دنیای بازی‌ها برای شما بسازیم.
+        </p>
+    </section>
 
-<section class="section about" id="about">
-    <h2 class="section-title">درباره PIKSO GAMES</h2>
-
-    <p>
-        PIKSO GAMES مجموعه‌ای برای معرفی و انتشار بازی‌های جذاب است.
-        هدف ما ارائه تجربه‌ای سرگرم‌کننده برای بازیکنان است.
-    </p>
-</section>
-
-<footer>
-    © 2026 PIKSO GAMES - تمامی حقوق محفوظ است.
-</footer>
+    <footer>
+        © تمامی حقوق برای PIKSO GAMES محفوظ است.
+    </footer>
 
 </body>
 </html>
