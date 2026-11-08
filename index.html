@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIKSO GAMES | فروشگاه بازی</title>
+    <title>PIKSO GAMES</title>
 
     <style>
         * {
@@ -77,33 +77,50 @@
             margin-bottom: 35px;
         }
 
+        .game-list {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
         .game-card {
             background: #17172b;
             border: 1px solid #343454;
             border-radius: 18px;
             padding: 20px;
-            max-width: 350px;
-            margin: auto;
+            width: 320px;
             text-align: center;
         }
 
         .game-card img {
             width: 100%;
-            height: 200px;
+            height: 190px;
             object-fit: cover;
             border-radius: 12px;
         }
 
         .game-card h3 {
             margin: 20px 0;
-            font-size: 22px;
+            font-size: 21px;
         }
 
         .price {
             color: #a855f7;
-            font-size: 23px;
+            font-size: 22px;
             font-weight: bold;
             margin: 18px 0;
+        }
+
+        .status {
+            display: inline-block;
+            background: #38234f;
+            color: #d8b4fe;
+            padding: 10px 20px;
+            border-radius: 9px;
+            margin-top: 10px;
+            font-weight: bold;
         }
 
         .buy-button {
@@ -174,21 +191,35 @@
     <section class="games" id="games">
         <h2>بازی‌های ما</h2>
 
-        <div class="game-card">
-            <img src="wolf.jpg" alt="THE END OF A WOLF">
+        <div class="game-list">
 
-            <h3>THE END OF A WOLF</h3>
+            <!-- بازی اول -->
+            <div class="game-card">
+                <img src="wolf.jpg" alt="THE END OF A WOLF">
 
-            <div class="price">۵۰٬۰۰۰ تومان</div>
+                <h3>THE END OF A WOLF</h3>
 
-            <a
-                class="buy-button"
-                href="https://daramet.com/adms_mozi/products"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                خرید و حمایت از بازی
-            </a>
+                <div class="price">۵۰٬۰۰۰ تومان</div>
+
+                <a
+                    class="buy-button"
+                    href="https://daramet.com/adms_mozi/products"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    خرید و حمایت از بازی
+                </a>
+            </div>
+
+            <!-- بازی دوم -->
+            <div class="game-card">
+                <img src="wolf-racing.jpg" alt="WOLF RACING 1">
+
+                <h3>WOLF RACING 1</h3>
+
+                <div class="status">به‌زودی</div>
+            </div>
+
         </div>
     </section>
 
