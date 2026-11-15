@@ -2,136 +2,176 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کتابخانه من | PIKSO GAMES</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کتابخانه من | PIKSO GAMES</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            background: #09090f;
-            color: white;
-            font-family: Tahoma, Arial, sans-serif;
-        }
+body {
+    background: #09090f;
+    color: white;
+    font-family: Tahoma, Arial, sans-serif;
+    padding-left: 190px;
+}
 
-        header {
-            background: #11111b;
-            padding: 22px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            border-bottom: 1px solid #302344;
-        }
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 190px;
+    height: 100vh;
+    background: #11111b;
+    border-right: 1px solid #302344;
+    padding: 25px 15px;
+}
 
-        .logo {
-            color: #a855f7;
-            font-size: 25px;
-            font-weight: bold;
-        }
+.sidebar h3 {
+    color: #a855f7;
+    text-align: center;
+    margin-bottom: 35px;
+}
 
-        .container {
-            width: 84%;
-            margin: 50px auto;
-        }
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    background: #1b1b2a;
+}
 
-        h1 {
-            color: #c084fc;
-            margin-bottom: 15px;
-        }
+.sidebar a:hover {
+    background: #7026b9;
+}
 
-        .welcome {
-            color: #aaa;
-            margin-bottom: 40px;
-        }
+header {
+    background: #11111b;
+    padding: 22px;
+    border-bottom: 1px solid #302344;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
 
-        .games {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
-            gap: 25px;
-        }
+.logo {
+    color: #a855f7;
+    font-size: 23px;
+    font-weight: bold;
+}
 
-        .game-card {
-            background: #151521;
-            border: 1px solid #302344;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
+.logout {
+    background: #7e22ce;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-        .game-card:hover {
-            transform: translateY(-6px);
-            border-color: #a855f7;
-        }
+.container {
+    width: 90%;
+    margin: 45px auto;
+}
 
-        .game-card img {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
+h1 {
+    color: #c084fc;
+    margin-bottom: 15px;
+}
 
-        .game-info {
-            padding: 22px;
-        }
+.welcome {
+    color: #aaa;
+    margin-bottom: 35px;
+}
 
-        .game-info h2 {
-            font-size: 21px;
-            margin-bottom: 15px;
-        }
+.games {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+    gap: 25px;
+}
 
-        .free {
-            display: inline-block;
-            background: #153c29;
-            color: #65e6a0;
-            padding: 7px 15px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-        }
+.game-card {
+    background: #151521;
+    border: 1px solid #302344;
+    border-radius: 15px;
+    overflow: hidden;
+}
 
-        .download {
-            display: block;
-            text-align: center;
-            background: #9333ea;
-            color: white;
-            padding: 13px;
-            text-decoration: none;
-            border-radius: 9px;
-        }
+.game-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
 
-        .download:hover {
-            background: #7e22ce;
-        }
+.game-info {
+    padding: 22px;
+}
 
-        .logout {
-            background: #7e22ce;
-            color: white;
-            border: none;
-            padding: 11px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+.game-info h2 {
+    margin-bottom: 18px;
+    font-size: 21px;
+}
 
-        .message {
-            color: #fca5a5;
-            margin-top: 25px;
-        }
+.free {
+    display: inline-block;
+    background: #153c29;
+    color: #65e6a0;
+    padding: 7px 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
 
-        @media(max-width: 600px) {
-            .container {
-                width: 90%;
-            }
-        }
-    </style>
+.download {
+    display: block;
+    text-align: center;
+    background: #9333ea;
+    color: white;
+    padding: 13px;
+    border-radius: 9px;
+    text-decoration: none;
+}
+
+.download:hover {
+    background: #7e22ce;
+}
+
+.message {
+    color: #fca5a5;
+    margin-top: 20px;
+}
+
+@media(max-width: 700px) {
+    body {
+        padding-left: 145px;
+    }
+
+    .sidebar {
+        width: 145px;
+        padding: 20px 10px;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+</style>
 </head>
 
 <body>
+
+<aside class="sidebar">
+    <h3>PIKSO MENU</h3>
+    <a href="index.html">🏠 خانه</a>
+    <a href="dashboard.html">🎮 کتابخانه من</a>
+    <a href="login.html">👤 حساب کاربری</a>
+</aside>
 
 <header>
     <div class="logo">PIKSO GAMES</div>
@@ -148,22 +188,17 @@
     <div class="games">
 
         <div class="game-card">
-            <img
-                src="IMG_20261106_004502_679.jpg"
-                alt="WOLF RACING"
-            >
+            <img src="IMG_20261106_004502_679.jpg" alt="WOLF RACING">
 
             <div class="game-info">
                 <h2>WOLF RACING</h2>
 
                 <div class="free">رایگان</div>
 
-                <a
-                    class="download"
-                    href="https://www.picofile.com/f/tN9NxENv5s/pixo-games.zip"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="download"
+                   href="https://www.picofile.com/f/tN9NxENv5s/pixo-games.zip"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     دانلود دوباره بازی
                 </a>
             </div>
