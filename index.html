@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PIKSO GAMES</title>
+<link rel="icon" href="pikso-logo-header.jpg" type="image/jpeg">
 
 <style>
 * {
@@ -28,14 +29,15 @@ body {
     height: 100vh;
     background: #11111b;
     border-right: 1px solid #302344;
-    padding: 25px 15px;
+    padding: 20px 14px;
     z-index: 1000;
 }
 
-.sidebar h3 {
-    color: #a855f7;
-    text-align: center;
-    margin-bottom: 35px;
+.sidebar-logo {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    margin-bottom: 30px;
 }
 
 .sidebar a {
@@ -53,9 +55,9 @@ body {
 }
 
 header {
-    padding: 22px 5%;
     background: #11111b;
     border-bottom: 1px solid #302344;
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,10 +65,10 @@ header {
     gap: 15px;
 }
 
-.logo {
-    color: #a855f7;
-    font-size: 25px;
-    font-weight: bold;
+.logo-image {
+    width: 115px;
+    height: auto;
+    display: block;
 }
 
 nav {
@@ -209,7 +211,7 @@ footer {
 
     .sidebar {
         width: 145px;
-        padding: 20px 10px;
+        padding: 15px 10px;
     }
 
     .hero h1 {
@@ -217,12 +219,16 @@ footer {
     }
 
     header {
-        padding: 18px 12px;
+        padding: 15px 10px;
     }
 
     nav {
         gap: 12px;
         font-size: 12px;
+    }
+
+    .logo-image {
+        width: 95px;
     }
 }
 </style>
@@ -231,7 +237,12 @@ footer {
 <body>
 
 <aside class="sidebar">
-    <h3>PIKSO MENU</h3>
+    <img
+        src="pikso-logo-header.jpg"
+        class="sidebar-logo"
+        alt="PIKSO GAMES"
+    >
+
     <a href="index.html">🏠 خانه</a>
     <a href="dashboard.html">🎮 کتابخانه من</a>
     <a href="login.html">👤 ورود به حساب</a>
@@ -239,7 +250,11 @@ footer {
 </aside>
 
 <header>
-    <div class="logo">PIKSO GAMES</div>
+    <img
+        src="pikso-logo-header.jpg"
+        class="logo-image"
+        alt="PIKSO GAMES"
+    >
 
     <nav>
         <a href="#">خانه</a>
