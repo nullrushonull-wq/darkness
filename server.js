@@ -10,28 +10,45 @@ const PORT = process.env.PORT || 3000;
 
 const USERS_FILE = path.join(__dirname, "users.json");
 
-// تنظیمات سرور
 app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// تنظیمات نشست کاربر
+// نشست کاربر: اعتبار کوکی ۳۰ روز
 app.use(session({
     secret: process.env.SESSION_SECRET || "pikso-development-secret",
     resave: false,
     saveUninitialized: false,
+    rolling: true,
     cookie: {
         httpOnly: true,
         sameSite: "lax",
         secure: "auto",
-        maxAge: 24 * 60 * 60 * 1000
+        maxAge: 30 * 24 * 60 * 60 * 1000
     }
 }));
 
-// نمایش فایل‌های سایت از کنار server.js
+// جلوگیری از نمایش فایل‌های حساس
+app.use((req, res, next) => {
+    const blocked = [
+        "/users.json",
+        "/server.js",
+        "/package.json",
+        "/package-lock.json"
+    ];
+
+    if (blocked.includes(req.path)) {
+        return res.sendStatus(404);
+    }
+
+    next();
+});
+
+// فایل‌های سایت
 app.use(express.static(__dirname));
 
-// دریافت کاربران
+// خواندن کاربران
 function getUsers() {
     try {
         if (!fs.existsSync(USERS_FILE)) {
@@ -57,7 +74,7 @@ function saveUsers(users) {
     );
 }
 
-// صفحه اصلی API
+// تست سرور
 app.get("/api", (req, res) => {
     res.json({
         message: "PIKSO GAMES SERVER IS RUNNING!"
@@ -94,10 +111,8 @@ app.post("/api/register", async (req, res) => {
 
         const users = getUsers();
 
-        const exists = users.some(
-            user =>
-                typeof user.username === "string" &&
-                user.username.toLowerCase() === cleanUsername.toLowerCase()
+        const exists = users.some(user =>
+            user.username.toLowerCase() === cleanUsername.toLowerCase()
         );
 
         if (exists) {
@@ -144,10 +159,8 @@ app.post("/api/login", async (req, res) => {
 
         const users = getUsers();
 
-        const user = users.find(
-            item =>
-                typeof item.username === "string" &&
-                item.username.toLowerCase() === username.trim().toLowerCase()
+        const user = users.find(item =>
+            item.username.toLowerCase() === username.trim().toLowerCase()
         );
 
         if (!user || !(await bcrypt.compare(password, user.password))) {
@@ -156,7 +169,7 @@ app.post("/api/login", async (req, res) => {
             });
         }
 
-        req.session.regenerate((error) => {
+        req.session.regenerate(error => {
             if (error) {
                 console.error(error);
 
@@ -167,7 +180,7 @@ app.post("/api/login", async (req, res) => {
 
             req.session.username = user.username;
 
-            req.session.save((saveError) => {
+            req.session.save(saveError => {
                 if (saveError) {
                     console.error(saveError);
 
@@ -192,7 +205,7 @@ app.post("/api/login", async (req, res) => {
     }
 });
 
-// اطلاعات حساب کاربری
+// اطلاعات حساب
 app.get("/api/me", (req, res) => {
     if (!req.session.username) {
         return res.status(401).json({
@@ -205,9 +218,9 @@ app.get("/api/me", (req, res) => {
     });
 });
 
-// خروج از حساب
+// خروج
 app.post("/api/logout", (req, res) => {
-    req.session.destroy((error) => {
+    req.session.destroy(error => {
         if (error) {
             console.error(error);
 
@@ -224,7 +237,7 @@ app.post("/api/logout", (req, res) => {
     });
 });
 
-// مدیریت خطاها
+// خطاها
 app.use((error, req, res, next) => {
     console.error(error);
 
