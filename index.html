@@ -2,178 +2,241 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIKSO GAMES | پیکسو گیمز</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIKSO GAMES</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background: #09090f;
-            color: white;
-        }
+body {
+    background: #09090f;
+    color: white;
+    font-family: Tahoma, Arial, sans-serif;
+    padding-left: 190px;
+}
 
-        header {
-            padding: 22px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            background: #11111b;
-            border-bottom: 1px solid #29203d;
-        }
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 190px;
+    height: 100vh;
+    background: #11111b;
+    border-right: 1px solid #302344;
+    padding: 25px 15px;
+    z-index: 1000;
+}
 
-        .logo {
-            color: #a855f7;
-            font-size: 26px;
-            font-weight: bold;
-        }
+.sidebar h3 {
+    color: #a855f7;
+    text-align: center;
+    margin-bottom: 35px;
+}
 
-        nav {
-            display: flex;
-            gap: 22px;
-            flex-wrap: wrap;
-        }
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    background: #1b1b2a;
+}
 
-        nav a {
-            color: #ddd;
-            text-decoration: none;
-        }
+.sidebar a:hover {
+    background: #7026b9;
+}
 
-        nav a:hover {
-            color: #a855f7;
-        }
+header {
+    padding: 22px 5%;
+    background: #11111b;
+    border-bottom: 1px solid #302344;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: radial-gradient(circle, #291344, #09090f 70%);
-        }
+.logo {
+    color: #a855f7;
+    font-size: 25px;
+    font-weight: bold;
+}
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-        .hero h1 span {
-            color: #a855f7;
-        }
+nav a {
+    color: #ddd;
+    text-decoration: none;
+}
 
-        .hero p {
-            color: #bbb;
-            line-height: 2;
-        }
+nav a:hover {
+    color: #a855f7;
+}
 
-        .games {
-            padding: 60px 8%;
-        }
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: radial-gradient(circle, #291344, #09090f 70%);
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 40px;
-        }
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
 
-        .game-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 350px));
-            justify-content: center;
-            gap: 25px;
-        }
+.hero h1 span {
+    color: #a855f7;
+}
 
-        .game-card {
-            background: #151521;
-            border: 1px solid #302344;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
+.hero p {
+    color: #bbb;
+    line-height: 2;
+}
 
-        .game-card:hover {
-            transform: translateY(-7px);
-            border-color: #a855f7;
-        }
+.games {
+    padding: 60px 6%;
+}
 
-        .game-card img {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-        }
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 30px;
+}
 
-        .game-info {
-            padding: 22px;
-        }
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+    justify-content: center;
+    gap: 25px;
+}
 
-        .game-info h3 {
-            font-size: 21px;
-            margin-bottom: 15px;
-        }
+.game-card {
+    background: #151521;
+    border: 1px solid #302344;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+}
 
-        .game-info p {
-            color: #aaa;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
+.game-card:hover {
+    transform: translateY(-7px);
+    border-color: #a855f7;
+}
 
-        .price {
-            color: #c084fc;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
+.game-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
 
-        .status {
-            display: inline-block;
-            background: #153c29;
-            color: #65e6a0;
-            padding: 7px 15px;
-            border-radius: 20px;
-            margin-bottom: 18px;
-        }
+.game-info {
+    padding: 22px;
+}
 
-        .game-button {
-            display: block;
-            text-align: center;
-            background: #9333ea;
-            color: white;
-            padding: 13px;
-            border-radius: 9px;
-            text-decoration: none;
-            transition: 0.2s;
-        }
+.game-info h3 {
+    margin-bottom: 15px;
+    font-size: 21px;
+}
 
-        .game-button:hover {
-            background: #7e22ce;
-        }
+.game-info p {
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
 
-        .about {
-            padding: 60px 8%;
-            text-align: center;
-            background: #11111b;
-        }
+.price {
+    color: #c084fc;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
 
-        .about p {
-            color: #bbb;
-            line-height: 2;
-            margin-top: 20px;
-        }
+.status {
+    display: inline-block;
+    background: #153c29;
+    color: #65e6a0;
+    padding: 7px 15px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+}
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #777;
-            background: #08080d;
-        }
-    </style>
+.game-button {
+    display: block;
+    text-align: center;
+    background: #9333ea;
+    color: white;
+    padding: 13px;
+    border-radius: 9px;
+    text-decoration: none;
+}
+
+.game-button:hover {
+    background: #7e22ce;
+}
+
+.about {
+    padding: 60px 8%;
+    text-align: center;
+    background: #11111b;
+}
+
+.about p {
+    color: #bbb;
+    line-height: 2;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+@media(max-width: 700px) {
+    body {
+        padding-left: 145px;
+    }
+
+    .sidebar {
+        width: 145px;
+        padding: 20px 10px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    header {
+        padding: 18px 12px;
+    }
+
+    nav {
+        gap: 12px;
+        font-size: 12px;
+    }
+}
+</style>
 </head>
 
 <body>
+
+<aside class="sidebar">
+    <h3>PIKSO MENU</h3>
+    <a href="index.html">🏠 خانه</a>
+    <a href="dashboard.html">🎮 کتابخانه من</a>
+    <a href="login.html">👤 ورود به حساب</a>
+    <a href="register.html">📝 ثبت‌نام</a>
+</aside>
 
 <header>
     <div class="logo">PIKSO GAMES</div>
@@ -182,8 +245,6 @@
         <a href="#">خانه</a>
         <a href="#games">بازی‌های ما</a>
         <a href="#about">درباره ما</a>
-        <a href="login.html">ورود کاربران</a>
-        <a href="register.html">ثبت‌نام</a>
     </nav>
 </header>
 
@@ -197,51 +258,37 @@
 
     <div class="game-container">
 
-        <!-- WOLF RACING -->
         <div class="game-card">
-            <img
-                src="IMG_20261106_004502_679.jpg"
-                alt="WOLF RACING"
-            >
+            <img src="IMG_20261106_004502_679.jpg" alt="WOLF RACING">
 
             <div class="game-info">
                 <h3>WOLF RACING</h3>
-
                 <p>یک تجربه مسابقه‌ای از استودیو PIKSO GAMES.</p>
 
                 <div class="status">رایگان</div>
 
-                <a
-                    class="game-button"
-                    href="https://www.picofile.com/f/tN9NxENv5s/pixo-games.zip"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="game-button"
+                   href="https://www.picofile.com/f/tN9NxENv5s/pixo-games.zip"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     دانلود رایگان بازی
                 </a>
             </div>
         </div>
 
-        <!-- THE END OF A WOLF -->
         <div class="game-card">
-            <img
-                src="wolf.jpg"
-                alt="THE END OF A WOLF"
-            >
+            <img src="wolf.jpg" alt="THE END OF A WOLF">
 
             <div class="game-info">
                 <h3>THE END OF A WOLF</h3>
-
                 <p>یکی دیگر از بازی‌های استودیو PIKSO GAMES.</p>
 
                 <div class="price">۵۰٬۰۰۰ تومان</div>
 
-                <a
-                    class="game-button"
-                    href="https://daramet.com/adms_mozi/product-UYQ-866/1793897561796151"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="game-button"
+                   href="https://daramet.com/adms_mozi/product-UYQ-866/1793897561796151"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     خرید بازی
                 </a>
             </div>
@@ -252,7 +299,6 @@
 
 <section class="about" id="about">
     <h2>درباره PIKSO GAMES</h2>
-
     <p>
         ما در استودیو پیکسو گیمز بازی‌های خودمان را طراحی و تولید می‌کنیم.
         هدف ما ساخت تجربه‌های جذاب و متفاوت برای بازیکنان است.
