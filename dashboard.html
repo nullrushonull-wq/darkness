@@ -4,104 +4,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پنل کاربری | PIKSO GAMES</title>
+    <title>کتابخانه من | PIKSO GAMES</title>
+
     <style>
-        * { box-sizing: border-box; }
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            background: #09090d;
-            color: white;
-            font-family: Tahoma;
+            padding: 0;
         }
+
+        body {
+            background: #09090f;
+            color: white;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
         header {
-            background: #15151e;
-            padding: 22px 7%;
+            background: #11111b;
+            padding: 22px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #713cff;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #302344;
         }
-        .logo { color: #a77aff; font-size: 24px; font-weight: bold; }
-        main { width: 90%; max-width: 1000px; margin: 40px auto; }
-        .card {
-            background: #15151e;
-            border: 1px solid #713cff;
+
+        .logo {
+            color: #a855f7;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 84%;
+            margin: 50px auto;
+        }
+
+        h1 {
+            color: #c084fc;
+            margin-bottom: 15px;
+        }
+
+        .welcome {
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: #151521;
+            border: 1px solid #302344;
             border-radius: 15px;
-            padding: 25px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            border-color: #a855f7;
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 22px;
+        }
+
+        .game-info h2 {
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .free {
+            display: inline-block;
+            background: #153c29;
+            color: #65e6a0;
+            padding: 7px 15px;
+            border-radius: 20px;
             margin-bottom: 20px;
         }
-        h1 { color: #a77aff; }
-        button {
-            background: #713cff;
+
+        .download {
+            display: block;
+            text-align: center;
+            background: #9333ea;
+            color: white;
+            padding: 13px;
+            text-decoration: none;
+            border-radius: 9px;
+        }
+
+        .download:hover {
+            background: #7e22ce;
+        }
+
+        .logout {
+            background: #7e22ce;
             color: white;
             border: none;
-            padding: 12px 22px;
+            padding: 11px 18px;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 14px;
+        }
+
+        .message {
+            color: #fca5a5;
+            margin-top: 25px;
+        }
+
+        @media(max-width: 600px) {
+            .container {
+                width: 90%;
+            }
         }
     </style>
 </head>
+
 <body>
 
 <header>
     <div class="logo">PIKSO GAMES</div>
-    <button id="logout">خروج از حساب</button>
+    <button class="logout" onclick="logout()">خروج از حساب</button>
 </header>
 
-<main>
-    <section class="card">
-        <h1>پنل کاربری</h1>
-        <h3 id="welcome">در حال بارگذاری...</h3>
-        <p>به پنل کاربری PIKSO GAMES خوش آمدی.</p>
-    </section>
+<main class="container">
+    <h1>کتابخانه بازی‌های من</h1>
 
-    <section class="card">
-        <h2>اطلاعات حساب</h2>
-        <p>نام کاربری: <span id="username">...</span></p>
-        <p>وضعیت حساب: فعال</p>
-    </section>
+    <p class="welcome" id="welcome">
+        در حال بررسی حساب کاربری...
+    </p>
 
-    <section class="card">
-        <h2>بازی‌های من</h2>
-        <p>هنوز بازی‌ای به حساب شما اضافه نشده است.</p>
-    </section>
+    <div class="games">
 
-    <p id="message"></p>
+        <div class="game-card">
+            <img
+                src="IMG_20261106_004502_679.jpg"
+                alt="WOLF RACING"
+            >
+
+            <div class="game-info">
+                <h2>WOLF RACING</h2>
+
+                <div class="free">رایگان</div>
+
+                <a
+                    class="download"
+                    href="https://www.picofile.com/f/tN9NxENv5s/pixo-games.zip"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    دانلود دوباره بازی
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="message" id="message"></p>
 </main>
 
 <script>
-async function loadAccount() {
+async function checkLogin() {
     try {
-        const response = await fetch("/api/me");
+        const response = await fetch("/api/me", {
+            credentials: "same-origin"
+        });
 
         if (!response.ok) {
             window.location.href = "login.html";
             return;
         }
 
-        const data = await response.json();
+        const user = await response.json();
 
         document.getElementById("welcome").textContent =
-            "سلام، " + data.username;
-
-        document.getElementById("username").textContent =
-            data.username;
+            "خوش آمدی " + user.username + " عزیز!";
 
     } catch (error) {
-        document.getElementById("message").textContent =
-            "خطا در ارتباط با سرور";
+        document.getElementById("welcome").textContent =
+            "ارتباط با سرور برقرار نشد.";
     }
 }
 
-document.getElementById("logout").addEventListener("click", async () => {
-    const response = await fetch("/api/logout", { method: "POST" });
+async function logout() {
+    try {
+        const response = await fetch("/api/logout", {
+            method: "POST",
+            credentials: "same-origin"
+        });
 
-    if (response.ok) {
-        window.location.href = "login.html";
+        if (response.ok) {
+            window.location.href = "login.html";
+        } else {
+            document.getElementById("message").textContent =
+                "خروج از حساب انجام نشد.";
+        }
+    } catch (error) {
+        document.getElementById("message").textContent =
+            "ارتباط با سرور برقرار نشد.";
     }
-});
+}
 
-loadAccount();
+checkLogin();
 </script>
 
 </body>
