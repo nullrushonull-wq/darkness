@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>کتابخانه من | PIKSO GAMES</title>
+<link rel="icon" href="pikso-logo-header.jpg" type="image/jpeg">
 
 <style>
 * {
@@ -28,13 +29,15 @@ body {
     height: 100vh;
     background: #11111b;
     border-right: 1px solid #302344;
-    padding: 25px 15px;
+    padding: 20px 14px;
+    z-index: 1000;
 }
 
-.sidebar h3 {
-    color: #a855f7;
-    text-align: center;
-    margin-bottom: 35px;
+.sidebar-logo {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    margin-bottom: 30px;
 }
 
 .sidebar a {
@@ -53,7 +56,7 @@ body {
 
 header {
     background: #11111b;
-    padding: 22px;
+    padding: 15px 25px;
     border-bottom: 1px solid #302344;
     display: flex;
     justify-content: space-between;
@@ -61,10 +64,9 @@ header {
     gap: 12px;
 }
 
-.logo {
-    color: #a855f7;
-    font-size: 23px;
-    font-weight: bold;
+.logo-image {
+    width: 115px;
+    height: auto;
 }
 
 .logout {
@@ -154,11 +156,15 @@ h1 {
 
     .sidebar {
         width: 145px;
-        padding: 20px 10px;
+        padding: 15px 10px;
     }
 
     .container {
         width: 95%;
+    }
+
+    .logo-image {
+        width: 95px;
     }
 }
 </style>
@@ -167,14 +173,24 @@ h1 {
 <body>
 
 <aside class="sidebar">
-    <h3>PIKSO MENU</h3>
+    <img
+        src="pikso-logo-header.jpg"
+        class="sidebar-logo"
+        alt="PIKSO GAMES"
+    >
+
     <a href="index.html">🏠 خانه</a>
     <a href="dashboard.html">🎮 کتابخانه من</a>
     <a href="login.html">👤 حساب کاربری</a>
 </aside>
 
 <header>
-    <div class="logo">PIKSO GAMES</div>
+    <img
+        src="pikso-logo-header.jpg"
+        class="logo-image"
+        alt="PIKSO GAMES"
+    >
+
     <button class="logout" onclick="logout()">خروج از حساب</button>
 </header>
 
@@ -186,7 +202,6 @@ h1 {
     </p>
 
     <div class="games">
-
         <div class="game-card">
             <img src="IMG_20261106_004502_679.jpg" alt="WOLF RACING">
 
@@ -203,7 +218,6 @@ h1 {
                 </a>
             </div>
         </div>
-
     </div>
 
     <p class="message" id="message"></p>
